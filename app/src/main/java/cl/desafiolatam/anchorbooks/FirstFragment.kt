@@ -12,16 +12,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cl.desafiolatam.anchorbooks.viewmodel.MyViewModel
 
-class FirstFragment : Fragment(), FirstFragmentListAdapter.OnBookSelectListener {
+class FirstFragment : Fragment(), FragmentListAdapter.OnBookSelectListener {
 
     private lateinit var vModel: MyViewModel
     private lateinit var recyView: RecyclerView
-    private lateinit var adapter: FirstFragmentListAdapter
+    private lateinit var adapter: FragmentListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         vModel = ViewModelProvider(this).get(MyViewModel::class.java)
-        adapter = FirstFragmentListAdapter(mutableListOf(), this)
+        adapter = FragmentListAdapter(mutableListOf(), this)
         vModel.productList.observe(this, Observer { adapter.update(it) })
     }
 
@@ -29,8 +29,8 @@ class FirstFragment : Fragment(), FirstFragmentListAdapter.OnBookSelectListener 
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        var view: View = inflater.inflate(R.layout.first_fragment, container, false)
+    ): View {
+        val view: View = inflater.inflate(R.layout.first_fragment, container, false)
         recyView = view.findViewById(R.id.recycler)
         recyView.layoutManager = LinearLayoutManager(context)
         recyView.adapter = adapter

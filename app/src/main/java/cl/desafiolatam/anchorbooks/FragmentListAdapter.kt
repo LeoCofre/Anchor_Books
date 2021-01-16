@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import cl.desafiolatam.anchorbooks.model.room.RoomBook
 import com.squareup.picasso.Picasso
 
-class FirstFragmentListAdapter (var list: MutableList<RoomBook>, var onProdSelListener:OnBookSelectListener):
-    RecyclerView.Adapter<FirstFragmentListAdapter.Holder>(),
+class FragmentListAdapter (var list: MutableList<RoomBook>, var onBookSelListener:OnBookSelectListener):
+    RecyclerView.Adapter<FragmentListAdapter.Holder>(),
     View.OnClickListener {
 
     class Holder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -27,7 +27,7 @@ class FirstFragmentListAdapter (var list: MutableList<RoomBook>, var onProdSelLi
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.book_list, parent, false)
-        var holder:Holder = Holder(view)
+        val holder = Holder(view)
         holder.title = view.findViewById(R.id.title_book)
         holder.author = view.findViewById(R.id.author_book)
         holder.image = view.findViewById(R.id.image_book)
@@ -48,7 +48,7 @@ class FirstFragmentListAdapter (var list: MutableList<RoomBook>, var onProdSelLi
     }
 
     override fun onClick(v: View?) {
-        onProdSelListener.onBooktSelected(v!!.tag as Int)
+        onBookSelListener.onBooktSelected(v!!.tag as Int)
     }
 
     interface OnBookSelectListener{
