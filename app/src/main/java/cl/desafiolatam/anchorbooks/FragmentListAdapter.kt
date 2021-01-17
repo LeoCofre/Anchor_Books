@@ -9,24 +9,28 @@ import androidx.recyclerview.widget.RecyclerView
 import cl.desafiolatam.anchorbooks.model.room.RoomBook
 import com.squareup.picasso.Picasso
 
-class FragmentListAdapter (var list: MutableList<RoomBook>, var onBookSelListener:OnBookSelectListener):
+class FragmentListAdapter(
+    var list: MutableList<RoomBook>,
+    var onBookSelListener: OnBookSelectListener
+) :
     RecyclerView.Adapter<FragmentListAdapter.Holder>(),
     View.OnClickListener {
 
-    class Holder(itemView: View): RecyclerView.ViewHolder(itemView){
+    class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         lateinit var title: TextView
         lateinit var author: TextView
         lateinit var image: ImageView
     }
 
-    fun update(list: MutableList<RoomBook>){
+    fun update(list: MutableList<RoomBook>) {
         this.list.clear()
         this.list = list
         notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.book_list, parent, false)
+        val view: View =
+            LayoutInflater.from(parent.context).inflate(R.layout.book_list, parent, false)
         val holder = Holder(view)
         holder.title = view.findViewById(R.id.title_book)
         holder.author = view.findViewById(R.id.author_book)
@@ -51,7 +55,7 @@ class FragmentListAdapter (var list: MutableList<RoomBook>, var onBookSelListene
         onBookSelListener.onBooktSelected(v!!.tag as Int)
     }
 
-    interface OnBookSelectListener{
-        fun onBooktSelected(id:Int)
+    interface OnBookSelectListener {
+        fun onBooktSelected(id: Int)
     }
 }

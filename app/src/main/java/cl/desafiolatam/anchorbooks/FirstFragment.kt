@@ -39,7 +39,7 @@ class FirstFragment : Fragment(), FragmentListAdapter.OnBookSelectListener {
     }
 
     override fun onBooktSelected(id: Int) {
-        var inten = Intent(context, SecondActivity::class.java)
+        val inten = Intent(context, SecondActivity::class.java)
         inten.putExtra("ID", id)
         startActivity(inten)
         (context as MainActivity).finish()
