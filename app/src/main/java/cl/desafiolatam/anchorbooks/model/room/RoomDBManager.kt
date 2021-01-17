@@ -7,15 +7,15 @@ import cl.desafiolatam.anchorbooks.model.retrofit.RetrofitBooksDetail
 
 class RoomDBManager(private val dao:RoomDao) {
 
-    //request para insertar lista productos a base de datos
+    //request para insertar lista libros a base de datos
     suspend fun insertProductList(list: MutableList<RetrofitBooks>){
-        var rList:MutableList<RoomBook> = mutableListOf()
+        val rList:MutableList<RoomBook> = mutableListOf()
         for(prod in list)
         rList.add(RoomBook(prod.author, prod.country,prod.id,prod.imageLink, prod.language,prod.title))
         dao.insertProductList(rList)
     }
 
-    //request para insertar detalle de producto a base de datos
+    //request para insertar detalle de libro a base de datos
     suspend fun insertDetail(det: RetrofitBooksDetail){
         dao.insertDetail(RoomDetail(det.author, det.country, det.delivery, det.id, det.imageLink, det.language, det.lastPrice,
             det.link, det.pages, det.price, det.title, det.year))
@@ -23,7 +23,7 @@ class RoomDBManager(private val dao:RoomDao) {
 
     }
 
-    //request para actualizar producto en base de datos
+    //request para actualizar libro en base de datos
     suspend fun updateProduct(prod: RetrofitBooks){
         dao.updateProduct(RoomBook( prod.author, prod.country, prod.id, prod.imageLink,prod.language,prod.title))
     }
@@ -34,12 +34,12 @@ class RoomDBManager(private val dao:RoomDao) {
             det.link, det.pages, det.price, det.title, det.year))
     }
 
-    //request para obtener lista productos de room
+    //request para obtener lista libros de room
     fun getProductsList(): LiveData<MutableList<RoomBook>> {
         return dao.getProductsList()
     }
 
-    //request para obtener detalle producto de room
+    //request para obtener detalle libro de room
     fun getDetail(id:Int): LiveData<RoomDetail> {
         return dao.getDetail(id)
     }
