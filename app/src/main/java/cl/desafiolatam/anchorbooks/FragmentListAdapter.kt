@@ -52,10 +52,10 @@ class FragmentListAdapter(
     }
 
     override fun onClick(v: View?) {
-        onBookSelListener.onBooktSelected(v!!.tag as Int)
+        onBookSelListener.onBookSelected(v!!.tag as Int)
     }
 
     interface OnBookSelectListener {
-        fun onBooktSelected(id: Int)
+        fun onBookSelected(id: Int)
     }
 }

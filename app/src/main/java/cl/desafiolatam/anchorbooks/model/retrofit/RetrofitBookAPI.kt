@@ -10,6 +10,6 @@ interface RetrofitBookAPI {
      fun getBooks(): Call<MutableList<RetrofitBooks>>
 
     @GET("bookDetail/{id}")
-     fun getBookDetail(@Path("code") code: Int):Call <RetrofitBooksDetail>
+     fun getBookDetail(@Path("id") id: Int):Call <RetrofitBooksDetail>
 
 }

@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun changeFragment(frag: Fragment) {
+    private fun changeFragment(frag: Fragment) {
         supportFragmentManager.beginTransaction().replace(R.id.frame, frag).commit()
     }
 }

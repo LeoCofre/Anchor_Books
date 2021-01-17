@@ -6,11 +6,7 @@ import retrofit2.Callback
 class RetrofitRequest {
 
 
-    private var onRetroListener: RetrofitBookAPI
-
-    init {
-        onRetroListener = RetrofitClient.getRetro().create(RetrofitBookAPI::class.java)
-    }
+    private var onRetroListener: RetrofitBookAPI = RetrofitClient.getRetro().create(RetrofitBookAPI::class.java)
 
     //Request para conseguir la lista de libros
     fun getBooks(callback: Callback<MutableList<RetrofitBooks>>) {

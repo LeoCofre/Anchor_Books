@@ -16,7 +16,7 @@ class SecondActivity: AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar))
         findViewById<CollapsingToolbarLayout>(R.id.toolbar_layout).title = title
 
-        fragment = BookDetailsFragment(this.intent.getIntExtra("ID", 1), this)
+        fragment = BookDetailsFragment(this.intent.getIntExtra("ID", 1))
         changeFragment(fragment)
 
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { fragment.sendEmail() }
