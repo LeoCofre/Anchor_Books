@@ -48,7 +48,7 @@ class BookDetailsFragment(var idBook: Int) : Fragment() {
         vModel.getDetails(idBook)
 
 
-        vModel.detail.observe(context as SecondActivity,  {
+        vModel.detail.observe(context as SecondActivity) {
             if (it != null && !it.title.isEmpty()) {
 
                 price.text = it.price.toString()
@@ -58,7 +58,7 @@ class BookDetailsFragment(var idBook: Int) : Fragment() {
                 price.text = it.price.toString()
                 detail = it
             }
-        })
+        }
 
         return view
     }

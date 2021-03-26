@@ -18,12 +18,11 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MyViewModel(application: Application) : AndroidViewModel(application) {
-    private val dbManager: RoomDBManager
+    private val dbManager: RoomDBManager = RoomDBManager(RoomDataBase.getDB(application).getDao())
     val productList: LiveData<MutableList<RoomBook>>
     lateinit var detail: LiveData<RoomDetail>
 
     init {
-        dbManager = RoomDBManager(RoomDataBase.getDB(application).getDao())
         productList = dbManager.getProductsList()
         if (productList.value.isNullOrEmpty())
             getProdListRetro()

@@ -22,7 +22,7 @@ class SecondActivity: AppCompatActivity() {
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { fragment.sendEmail() }
     }
 
-    fun changeFragment(frag: Fragment){
+    private fun changeFragment(frag: Fragment){
         supportFragmentManager.beginTransaction().replace(R.id.frame_second, frag).commit()
     }
 }
